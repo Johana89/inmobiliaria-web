@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Portafolio | Johana Gonzalez</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Portafolio de Johana Gonzalez - Desarrollo y diseño web. Proyectos reales en HTML, CSS y JavaScript.">
+
+<style>
+body{margin:0;font-family:'Segoe UI',Arial;background:#f4f6f8;color:#333}
+header{background:#0a3d62;color:#fff;padding:30px;text-align:center}
+header h1{margin:0;font-size:32px}
+header p{margin:5px 0}
+section{padding:50px 20px;max-width:1100px;margin:auto}
+h2{text-align:center;color:#0a3d62}
+.about{text-align:center;max-width:800px;margin:auto}
+.skills{display:flex;flex-wrap:wrap;justify-content:center}
+.skill{background:#fff;margin:10px;padding:15px 25px;border-radius:25px;box-shadow:0 0 8px rgba(0,0,0,.1)}
+.projects{display:flex;flex-wrap:wrap;justify-content:center}
+.project{background:#fff;width:340px;margin:15px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.15);overflow:hidden}
+.project img{width:100%;height:200px;object-fit:cover}
+.project-content{padding:20px}
+.project-content h3{margin-top:0}
+.project-content a{display:inline-block;margin:5px 0;color:#1e3799;font-weight:bold;text-decoration:none}
+.contact{text-align:center}
+button{background:#25D366;color:#fff;border:none;padding:15px 25px;font-size:16px;border-radius:8px;cursor:pointer}
+footer{background:#0a3d62;color:#fff;text-align:center;padding:20px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Johana Gonzalez</h1>
+<p>Diseño y Desarrollo Web</p>
+<p>HTML • CSS • JavaScript</p>
+</header>
+
+<!-- SOBRE MI -->
+<section id="sobre">
+<h2>Sobre mí</h2>
+<div class="about">
+<p>
+Soy desarrolladora web junior con enfoque en diseño moderno y funcional.
+Me especializo en crear sitios web responsive, claros y listos para producción.
+Este portafolio reúne proyectos desarrollados como práctica profesional y simulación real para clientes.
+</p>
+</div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+<h2>Habilidades</h2>
+<div class="skills">
+<div class="skill">HTML5</div>
+<div class="skill">CSS3</div>
+<div class="skill">JavaScript</div>
+<div class="skill">Diseño Responsive</div>
+<div class="skill">GitHub Pages</div>
+<div class="skill">UX / UI</div>
+<div class="skill">WhatsApp API</div>
+<div class="skill">Google Maps</div>
+</div>
+</section>
+
+<!-- PROYECTOS -->
+<section id="proyectos">
+<h2>Proyectos</h2>
+
+<div class="projects">
+
+<!-- PROYECTO INMOBILIARIA -->
+<div class="project">
+<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be">
+<div class="project-content">
+<h3>Web Inmobiliaria (Proyecto Destacado)</h3>
+<p>
+Sitio web inmobiliario completo orientado al mercado paraguayo.
+Incluye sliders, mapas, contacto por WhatsApp y diseño empresa.
+</p>
+<a href="#" onclick="abrirInmobiliaria()">🔗 Ver demo</a><br>
+<a href="#" onclick="alert('Repositorio en GitHub')">💻 Código en GitHub</a>
+</div>
+</div>
+
+<!-- PROYECTO FUTURO -->
+<div class="project">
+<img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085">
+<div class="project-content">
+<h3>Próximo Proyecto</h3>
+<p>
+Espacio reservado para futuros desarrollos web.
+</p>
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+<h2>Contacto</h2>
+<div class="contact">
+<p>¿Querés contactarme o ver mis trabajos?</p>
+<button onclick="contactar()">Enviar WhatsApp</button>
+</div>
+</section>
+
+<footer>
+<p>📞 WhatsApp: 0983 341 525</p>
+<p>© 2026 Johana Gonzalez – Portafolio Web</p>
+</footer>
+
+<script>
+function contactar(){
+window.open("https://wa.me/595983341525?text="+
+encodeURIComponent("Hola Johana, vi tu portafolio y me gustaría contactarte."));
+}
+
+function abrirInmobiliaria(){
+alert("Acá podés poner el link a tu proyecto inmobiliario publicado en GitHub Pages");
+}
+</script>
+
+</body>
+</html>
+
+

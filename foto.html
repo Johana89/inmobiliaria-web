@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Inmobiliaria Paraguay</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;font-family:Arial;background:#f4f4f4}
+header{background:#0a3d62;color:#fff;text-align:center;padding:20px}
+nav{display:flex;justify-content:center;background:#1e3799;flex-wrap:wrap}
+nav a{color:#fff;padding:15px;text-decoration:none}
+nav a:hover{background:#4a69bd}
+.hero{background:#0a3d62;color:#fff;padding:40px;text-align:center}
+section{padding:20px}
+.filtros{text-align:center;margin-bottom:20px}
+select{padding:10px;margin:5px;border-radius:5px}
+.cards{display:flex;flex-wrap:wrap;justify-content:center}
+.card{background:#fff;border-radius:10px;margin:15px;width:300px;
+box-shadow:0 0 10px rgba(0,0,0,.1);cursor:pointer}
+.card img{width:100%;border-radius:10px 10px 0 0;height:200px;object-fit:cover}
+.card h3{text-align:center}
+.card p{text-align:center}
+.precio{color:green;font-weight:bold}
+footer{background:#0a3d62;color:#fff;text-align:center;padding:15px}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Inmobiliaria Paraguay</h1>
+<p>Terrenos • Casas • Alquileres</p>
+</header>
+
+<nav>
+<a href="#terrenos">Terrenos</a>
+<a href="#casas">Casas</a>
+<a href="#alquileres">Alquileres</a>
+<a href="#contacto">Contacto</a>
+</nav>
+
+<div class="hero">
+<h2>Itauguá • Capiatá • San Lorenzo</h2>
+</div>
+
+<div class="filtros">
+<select id="filtroCiudad" onchange="filtrarPropiedades()">
+<option value="todos">Todas las ciudades</option>
+<option value="itaugua">Itauguá</option>
+<option value="capiata">Capiatá</option>
+<option value="sanlorenzo">San Lorenzo</option>
+</select>
+
+<select id="filtroTipo" onchange="filtrarPropiedades()">
+<option value="todos">Todos los tipos</option>
+<option value="terreno">Terrenos</option>
+<option value="casa">Casas</option>
+<option value="alquiler">Alquileres</option>
+</select>
+</div>
+
+<!-- TERRENOS -->
+<section id="terrenos">
+<h2>Terrenos en Venta</h2>
+<div class="cards">
+
+<div class="card" data-ciudad="itaugua" data-tipo="terreno">
+<img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef">
+<h3>Terreno en Itauguá</h3>
+<p>600 m² – Zona residencial</p>
+<p class="precio">Gs. 120.000.000</p>
+</div>
+
+<div class="card" data-ciudad="capiata" data-tipo="terreno">
+<img src="https://images.unsplash.com/photo-1592595896616-c37162298647">
+<h3>Terreno en Capiatá</h3>
+<p>Frente empedrado</p>
+<p class="precio">Gs. 95.000.000</p>
+</div>
+
+</div>
+</section>
+
+<!-- CASAS -->
+<section id="casas">
+<h2>Casas en Venta</h2>
+<div class="cards">
+
+<div class="card" data-ciudad="capiata" data-tipo="casa">
+<img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be">
+<h3>Casa Familiar en Capiatá</h3>
+<p>3 habitaciones – 2 baños</p>
+<p class="precio">Gs. 350.000.000</p>
+</div>
+
+<div class="card" data-ciudad="itaugua" data-tipo="casa">
+<img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
+<h3>Casa Moderna en Itauguá</h3>
+<p>Garage – Patio</p>
+<p class="precio">Gs. 420.000.000</p>
+</div>
+
+</div>
+</section>
+
+<!-- ALQUILERES -->
+<section id="alquileres">
+<h2>Alquileres</h2>
+<div class="cards">
+
+<div class="card" data-ciudad="sanlorenzo" data-tipo="alquiler">
+<img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267">
+<h3>Departamento en San Lorenzo</h3>
+<p>2 habitaciones</p>
+<p class="precio">Gs. 1.800.000 / mes</p>
+</div>
+
+<div class="card" data-ciudad="sanlorenzo" data-tipo="alquiler">
+<img src="https://images.unsplash.com/photo-1502673530728-f79b4cab31b1">
+<h3>Departamento Amoblado</h3>
+<p>Cerca de universidades</p>
+<p class="precio">Gs. 2.200.000 / mes</p>
+</div>
+
+</div>
+</section>
+
+<section id="contacto">
+<h2>Contacto</h2>
+<p>📞 WhatsApp: 0983 341 525</p>
+<p>📍 Paraguay</p>
+</section>
+
+<footer>
+<p>© 2026 Inmobiliaria Paraguay</p>
+</footer>
+
+<script>
+function filtrarPropiedades(){
+const ciudad=filtroCiudad.value;
+const tipo=filtroTipo.value;
+document.querySelectorAll(".card").forEach(c=>{
+c.style.display=
+(ciudad==="todos"||c.dataset.ciudad===ciudad)&&
+(tipo==="todos"||c.dataset.tipo===tipo)
+?"block":"none";
+});
+}
+
+const w=document.createElement("a");
+w.href="https://wa.me/595983341525";
+w.target="_blank";
+w.innerHTML="💬";
+w.style.position="fixed";
+w.style.bottom="20px";
+w.style.right="20px";
+w.style.background="#25D366";
+w.style.color="white";
+w.style.fontSize="28px";
+w.style.padding="15px";
+w.style.borderRadius="50%";
+w.style.textDecoration="none";
+document.body.appendChild(w);
+
+document.querySelectorAll(".card").forEach(card=>{
+card.onclick=()=>{
+w.href="https://wa.me/595983341525?text="+
+encodeURIComponent("Hola, me interesa la propiedad: "+card.querySelector("h3").innerText);
+};
+});
+</script>
+
+</body>
+</html>

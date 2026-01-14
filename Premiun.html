@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>InmoParaguay | Venta y Alquiler</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{margin:0;font-family:'Segoe UI',Arial;background:#f4f6f8}
+header{background:#0a3d62;color:#fff;padding:20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#fbc531}
+nav a{color:#fff;margin:0 10px;text-decoration:none;font-weight:600}
+.hero{text-align:center;padding:50px;background:#1e3799;color:#fff}
+section{padding:40px}
+.cards{display:flex;flex-wrap:wrap;justify-content:center}
+.card{background:#fff;width:330px;margin:15px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.15);overflow:hidden}
+.slider{position:relative;height:220px}
+.slider img{width:100%;height:220px;object-fit:cover}
+.badges{text-align:center;padding:8px}
+.badge{padding:6px 12px;border-radius:20px;font-size:12px;font-weight:bold;cursor:pointer}
+.venta{background:#2ecc71;color:#fff}
+.alquiler{background:#3498db;color:#fff}
+.vendido{background:#e74c3c;color:#fff}
+.card h3,p{text-align:center}
+.precio{color:#27ae60;font-weight:bold}
+iframe{width:100%;height:250px;border:0;border-radius:12px;margin-bottom:20px}
+form{max-width:420px;margin:auto;background:#fff;padding:25px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+input,textarea,button{width:100%;padding:12px;margin:6px 0}
+button{background:#25D366;color:#fff;border:none;font-size:16px;border-radius:6px;cursor:pointer}
+footer{background:#0a3d62;color:#fff;text-align:center;padding:20px}
+.admin{background:#fff;padding:20px;border-radius:10px;max-width:800px;margin:auto}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">🏠 Inmo<span>Paraguay</span></div>
+<nav>
+<a href="#propiedades">Propiedades</a>
+<a href="#mapas">Ubicación</a>
+<a href="#contacto">Contacto</a>
+<a href="#admin">Admin</a>
+</nav>
+</header>
+
+<div class="hero">
+<h1>Venta y Alquiler de Propiedades</h1>
+<p>Itauguá • Capiatá • San Lorenzo</p>
+</div>
+
+<!-- PROPIEDADES -->
+<section id="propiedades">
+<h2 style="text-align:center">Propiedades Destacadas</h2>
+<div class="cards" id="contenedor"></div>
+</section>
+
+<!-- MAPAS -->
+<section id="mapas">
+<h2 style="text-align:center">Ubicación</h2>
+<iframe src="https://maps.google.com/maps?q=Itaugua%20Paraguay&output=embed"></iframe>
+<iframe src="https://maps.google.com/maps?q=Capiata%20Paraguay&output=embed"></iframe>
+<iframe src="https://maps.google.com/maps?q=San%20Lorenzo%20Paraguay&output=embed"></iframe>
+</section>
+
+<!-- FORMULARIO -->
+<section id="contacto">
+<h2 style="text-align:center">Contacto</h2>
+<form onsubmit="enviarWhatsApp(event)">
+<input id="nombre" placeholder="Nombre" required>
+<input id="telefono" placeholder="Teléfono" required>
+<textarea id="mensaje" placeholder="Mensaje" required></textarea>
+<button>Enviar WhatsApp</button>
+</form>
+</section>
+
+<!-- ADMIN -->
+<section id="admin">
+<h2 style="text-align:center">Panel Administrador (Demo)</h2>
+<div class="admin">
+<p>✔ Gestión de propiedades</p>
+<p>✔ Cambiar estado: Venta / Alquiler / Vendido</p>
+<p>✔ Subir fotos (en versión real)</p>
+<p>✔ Preparado para Firebase o Backend</p>
+</div>
+</section>
+
+<footer>
+<p>📞 WhatsApp: 0983 341 525</p>
+<p>© 2026 InmoParaguay – Dominio recomendado: inmoparaguay.com.py</p>
+</footer>
+
+<script>
+// ===== PROPIEDADES (JSON) =====
+const propiedades=[
+{
+titulo:"Casa en Capiatá",
+precio:"Gs. 350.000.000",
+estado:"venta",
+desc:"3 habitaciones – Patio",
+imagenes:[
+"https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+"https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+]
+},
+{
+titulo:"Terreno en Itauguá",
+precio:"Gs. 120.000.000",
+estado:"venta",
+desc:"600 m²",
+imagenes:[
+"https://images.unsplash.com/photo-1500382017468-9049fed747ef",
+"https://images.unsplash.com/photo-1592595896616-c37162298647"
+]
+},
+{
+titulo:"Departamento San Lorenzo",
+precio:"Gs. 1.800.000 / mes",
+estado:"alquiler",
+desc:"2 habitaciones",
+imagenes:[
+"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267",
+"https://images.unsplash.com/photo-1502673530728-f79b4cab31b1"
+]
+}
+];
+
+const cont=document.getElementById("contenedor");
+
+propiedades.forEach(p=>{
+let i=0;
+const card=document.createElement("div");
+card.className="card";
+card.innerHTML=`
+<div class="slider"><img src="${p.imagenes[0]}"></div>
+<div class="badges"><span class="badge ${p.estado}">${p.estado.toUpperCase()}</span></div>
+<h3>${p.titulo}</h3>
+<p>${p.desc}</p>
+<p class="precio">${p.precio}</p>
+`;
+setInterval(()=>{
+i=(i+1)%p.imagenes.length;
+card.querySelector("img").src=p.imagenes[i];
+},3000);
+card.onclick=()=>window.open("https://wa.me/595983341525?text="+encodeURIComponent("Me interesa: "+p.titulo));
+cont.appendChild(card);
+});
+
+// WhatsApp flotante
+const w=document.createElement("a");
+w.href="https://wa.me/595983341525";
+w.innerHTML="💬";
+w.target="_blank";
+Object.assign(w.style,{position:"fixed",bottom:"20px",right:"20px",background:"#25D366",color:"#fff",fontSize:"28px",padding:"15px",borderRadius:"50%"});
+document.body.appendChild(w);
+
+function enviarWhatsApp(e){
+e.preventDefault();
+window.open(`https://wa.me/595983341525?text=Nombre:${nombre.value}%0ATel:${telefono.value}%0AMensaje:${mensaje.value}`);
+}
+</script>
+
+</body>
+</html>
